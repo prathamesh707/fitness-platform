@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { Eye, EyeOff, Dumbbell, ArrowLeft } from 'lucide-react'
-import { validateEmail } from 'c:/Users/Prathamesh/OneDrive/Desktop/fitness-platform/lib/utils'
+import { validateEmail } from '@/lib/utils'
 
 interface SignInForm {
   email: string
