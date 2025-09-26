@@ -1,40 +1,248 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# FitnessPro - Complete Fitness Platform
 
-## Getting Started
+A comprehensive Next.js fitness platform featuring user authentication, personalized workout plans, nutrition tracking, progress monitoring, and admin management.
 
-First, run the development server:
+## 🚀 Features
 
+### Core Features
+- **User Authentication**: Complete auth system with NextAuth.js
+- **Dashboard**: Personalized user dashboard with analytics
+- **Fitness Plans**: Browse and subscribe to workout programs  
+- **Nutrition Tracker**: Log meals and track macronutrients
+- **Progress Tracking**: Monitor fitness journey with photos and metrics
+- **Admin Panel**: Comprehensive admin controls for content management
+
+### Technical Features
+- **Responsive Design**: Mobile-first responsive design with Tailwind CSS
+- **Dark Mode**: System-wide dark/light theme support
+- **Animations**: Smooth animations with Framer Motion
+- **Database**: PostgreSQL with Prisma ORM
+- **Type Safety**: Full TypeScript implementation
+- **API Routes**: RESTful API design
+- **Middleware**: Authentication and route protection
+
+## 🛠 Tech Stack
+
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **Authentication**: NextAuth.js with JWT
+- **Database**: PostgreSQL with Prisma
+- **State Management**: React Context + Hooks
+- **Charts**: Recharts for data visualization
+- **Icons**: Lucide React
+- **Forms**: React Hook Form with Zod validation
+
+## 📦 Installation
+
+1. **Clone the repository**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/fitness-platform.git
+cd fitness-platform
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**
+```bash
+npm install
+# or
+yarn install
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+3. **Set up environment variables**
+```bash
+cp .env.example .env.local
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Edit `.env.local` with your configuration:
+```env
+DATABASE_URL="postgresql://username:password@localhost:5432/fitness_platform"
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key"
+JWT_SECRET="your-jwt-secret"
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+4. **Set up the database**
+```bash
+# Generate Prisma client
+npm run db:generate
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Push database schema
+npm run db:push
 
-## Learn More
+# Optional: Open Prisma Studio
+npm run db:studio
+```
 
-To learn more about Next.js, take a look at the following resources:
+5. **Start the development server**
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Visit `http://localhost:3000` to see the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🏗 Project Structure
 
-## Deploy on Vercel
+```
+fitness-platform/
+├── app/                      # Next.js 13+ App Router
+│   ├── api/                  # API Routes
+│   │   └── auth/            # Authentication endpoints
+│   ├── auth/                # Auth pages (signin, signup)
+│   ├── dashboard/           # User dashboard
+│   ├── plans/               # Fitness plans page
+│   ├── nutrition/           # Nutrition tracker
+│   ├── progress/            # Progress tracking
+│   ├── admin/               # Admin panel
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Homepage
+├── components/              # Reusable components
+│   ├── Navbar.tsx           # Navigation component
+│   ├── Footer.tsx           # Footer component
+│   └── ui/                  # UI components
+├── contexts/                # React contexts
+│   ├── AuthContext.tsx      # Authentication context
+│   └── ThemeContext.tsx     # Theme context
+├── lib/                     # Utility libraries
+│   ├── auth.ts              # Auth configuration
+│   ├── prisma.ts            # Prisma client
+│   └── utils.ts             # Helper functions
+├── prisma/                  # Database schema
+│   └── schema.prisma        # Prisma schema
+├── middleware.ts            # Next.js middleware
+├── next.config.js           # Next.js configuration
+├── tailwind.config.js       # Tailwind configuration
+└── package.json             # Dependencies
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔐 Authentication
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+The platform uses NextAuth.js with credential-based authentication:
+
+- **Sign Up**: Create new user accounts with email verification
+- **Sign In**: Secure login with JWT tokens
+- **Password Reset**: Email-based password recovery
+- **Role-based Access**: User and Admin roles
+- **Middleware Protection**: Route-level authentication
+
+## 📊 Database Schema
+
+Key database models:
+- **User**: User accounts and profiles
+- **FitnessPlan**: Workout programs and plans
+- **Workout**: Individual workout sessions
+- **Exercise**: Exercise definitions
+- **Subscription**: User plan subscriptions
+- **WorkoutLog**: Completed workout tracking
+- **NutritionLog**: Food and nutrition tracking
+- **ProgressPhoto**: Progress photo uploads
+- **Notification**: User notifications
+
+## 🎨 UI/UX Features
+
+### Design System
+- **Colors**: Primary/secondary color schemes with dark mode
+- **Typography**: Clean, readable font hierarchy
+- **Components**: Reusable button, input, and card components
+- **Animations**: Smooth micro-interactions and transitions
+
+### Responsive Design
+- **Mobile-first**: Optimized for mobile devices
+- **Tablet Support**: Adapted layouts for tablets
+- **Desktop Enhanced**: Full features on desktop
+
+## 🚢 Deployment
+
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on push
+
+### Environment Variables for Production
+```env
+DATABASE_URL="your-production-database-url"
+NEXTAUTH_URL="https://yourdomain.com"
+NEXTAUTH_SECRET="your-production-secret"
+JWT_SECRET="your-production-jwt-secret"
+```
+
+## 🧪 Development
+
+### Running Tests
+```bash
+npm run test
+```
+
+### Code Quality
+```bash
+# ESLint
+npm run lint
+
+# Type checking
+npm run type-check
+```
+
+### Database Management
+```bash
+# Reset database
+npm run db:reset
+
+# Seed database
+npm run db:seed
+
+# Generate migration
+npx prisma migrate dev --name migration-name
+```
+
+## 📈 Features Roadmap
+
+### Phase 1 (Current)
+- ✅ User authentication and authorization
+- ✅ Basic dashboard with analytics
+- ✅ Fitness plans browsing
+- ✅ Nutrition tracking
+- ✅ Progress monitoring
+
+### Phase 2
+- [ ] Workout video streaming
+- [ ] Social features and community
+- [ ] Mobile app (React Native)
+- [ ] Payment integration
+- [ ] Advanced analytics
+
+### Phase 3
+- [ ] AI-powered workout recommendations
+- [ ] Wearable device integrations
+- [ ] Marketplace for trainers
+- [ ] Advanced meal planning
+- [ ] Virtual personal training
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Email: support@fitnesspro.com
+- Documentation: [docs.fitnesspro.com](https://docs.fitnesspro.com)
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/) for the amazing React framework
+- [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
+- [Prisma](https://prisma.io/) for database management
+- [Framer Motion](https://framer.com/motion/) for animations
+- [Lucide](https://lucide.dev/) for beautiful icons
+
+---
+
+Built with ❤️ by the FitnessPro team
